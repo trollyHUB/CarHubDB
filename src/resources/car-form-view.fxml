@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controllers.CarFormController"
+      alignment="CENTER" spacing="10"
+      style="-fx-padding: 20; -fx-background-color: #f4f4f4;">
+
+    <Label fx:id="titleLabel" text="Добавить авто" style="-fx-font-size: 18px;"/>
+
+    <TextField fx:id="nameField" promptText="Название автомобиля"/>
+    <TextField fx:id="modelField" promptText="Модель"/>
+    <TextField fx:id="priceField" promptText="Цена"/>
+
+    <HBox spacing="10">
+        <Button fx:id="saveButton" text="Сохранить" onAction="#saveCar"/>
+        <Button text="Отмена" onAction="#cancel"/>
+    </HBox>
+</VBox>

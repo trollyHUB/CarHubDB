@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="650" prefWidth="500" stylesheets="@styles/main.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegisterController">
+
+    <!-- Градиентный фон -->
+    <VBox alignment="CENTER" styleClass="gradient-background" VBox.vgrow="ALWAYS">
+
+        <!-- Логотип и название -->
+        <VBox alignment="CENTER" spacing="5" style="-fx-padding: 0 0 30 0;">
+            <Label style="-fx-font-size: 54px;" text="🚗" />
+            <Label style="-fx-font-size: 32px;" styleClass="title" text="CarHub" />
+            <Label style="-fx-text-fill: rgba(255,255,255,0.9); -fx-font-size: 15px;" text="Создайте свой аккаунт" />
+        </VBox>
+
+        <!-- Форма регистрации -->
+        <VBox alignment="CENTER" prefWidth="380" spacing="15" style="-fx-padding: 35 30 35 30;" styleClass="card">
+
+            <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Регистрация" />
+
+            <!-- Поле имени -->
+            <VBox spacing="8">
+                <Label style="-fx-font-weight: bold; -fx-text-fill: #666;" text="👤 Имя пользователя" />
+                <TextField fx:id="fullnameField" prefWidth="320" promptText="Введите ваше имя" style="-fx-font-size: 14px;" />
+            </VBox>
+
+            <!-- Поле логина -->
+            <VBox spacing="8">
+                <Label style="-fx-font-weight: bold; -fx-text-fill: #666;" text="📧 Логин" />
+                <TextField fx:id="usernameField" prefWidth="320" promptText="Придумайте логин" style="-fx-font-size: 14px;" />
+            </VBox>
+
+            <!-- Поле пароля -->
+            <VBox spacing="8">
+                <Label style="-fx-font-weight: bold; -fx-text-fill: #666;" text="🔒 Пароль" />
+                <PasswordField fx:id="passwordField" prefWidth="320" promptText="Придумайте пароль" style="-fx-font-size: 14px;" />
+            </VBox>
+
+            <!-- Кнопка регистрации -->
+            <Button onAction="#onRegister" prefHeight="45" prefWidth="320" style="-fx-font-size: 15px;" styleClass="btn-success" text="✅ ЗАРЕГИСТРИРОВАТЬСЯ" />
+
+            <!-- Сообщение -->
+            <Label fx:id="messageLabel" maxWidth="320" style="-fx-text-fill: #F44336; -fx-font-weight: bold;" wrapText="true" />
+
+            <!-- Кнопка назад -->
+            <VBox alignment="CENTER" spacing="8">
+                <Label style="-fx-text-fill: #666;" text="Уже есть аккаунт?" />
+                <Button onAction="#backToLogin" prefWidth="320" style="-fx-font-size: 14px;" styleClass="btn-light" text="← Вернуться к входу" />
+            </VBox>
+
+        </VBox>
+
+        <!-- Копирайт -->
+        <Label style="-fx-text-fill: rgba(255,255,255,0.7); -fx-padding: 25 0 0 0; -fx-font-size: 12px;" text="© 2025 CarHub. Все права защищены." />
+
+    </VBox>
+
+</StackPane>

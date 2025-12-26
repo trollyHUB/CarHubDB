@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.CarHubController">
+
+    <top>
+        <VBox alignment="CENTER" spacing="5" style="-fx-padding: 10;">
+            <Label text="🚗 Добро пожаловать в CarHub!" style="-fx-font-size: 20px;"/>
+            <Label fx:id="roleLabel" text="Роль: неизвестна"/>
+        </VBox>
+    </top>
+
+    <center>
+        <TableView fx:id="carTable" prefWidth="800">
+            <columns>
+                <TableColumn fx:id="colName" text="Название"/>
+                <TableColumn fx:id="colModel" text="Модель"/>
+                <TableColumn fx:id="colPrice" text="Цена"/>
+                <TableColumn fx:id="colBrand" text="Бренд"/>
+                <TableColumn fx:id="colYear" text="Год"/>
+                <TableColumn fx:id="colMileage" text="Пробег"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <bottom>
+        <HBox spacing="10" alignment="CENTER" style="-fx-padding: 10;">
+            <Button fx:id="addButton" text="Добавить авто" onAction="#addCar"/>
+            <Button fx:id="deleteButton" text="Удалить авто" onAction="#deleteCar"/>
+            <Button fx:id="editButton" text="Редактировать авто" onAction="#editCar"/>
+        </HBox>
+    </bottom>
+</BorderPane>

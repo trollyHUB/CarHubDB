@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane style="-fx-background-color: #FAFAFA;" stylesheets="@styles/main.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CarHubController">
+
+    <top>
+        <VBox spacing="0">
+            <!-- Градиентный хедер -->
+            <HBox alignment="CENTER_LEFT" spacing="15" styleClass="header-bar">
+
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label style="-fx-font-size: 28px;" text="👑" />
+                    <Label style="-fx-font-size: 20px;" styleClass="welcome-message" text="Панель администратора" />
+                </HBox>
+
+                <Region HBox.hgrow="ALWAYS" />
+
+                <TextField fx:id="searchField" prefWidth="280" promptText="🔍 Поиск автомобилей..." styleClass="search-field" />
+
+                <Button onAction="#openStatistics" style="-fx-font-size: 16px; -fx-padding: 10 15;" styleClass="btn-icon" text="📊 Статистика" />
+
+                <Button onAction="#switchToTableView" style="-fx-font-size: 18px; -fx-padding: 8;" styleClass="btn-icon" text="📋">
+                    <tooltip>
+                        <Tooltip text="Режим таблицы" />
+                    </tooltip>
+                </Button>
+
+                <Button onAction="#switchToCardView" style="-fx-font-size: 18px; -fx-padding: 8; -fx-background-color: rgba(255,255,255,0.3);" styleClass="btn-icon" text="🎴">
+                    <tooltip>
+                        <Tooltip text="Режим карточек" />
+                    </tooltip>
+                </Button>
+
+                <Button onAction="#logout" style="-fx-padding: 8 15;" styleClass="btn-light" text="🚪 Выход" />
+
+            </HBox>
+
+            <!-- Панель управления -->
+            <HBox alignment="CENTER_LEFT" spacing="12" style="-fx-padding: 12; -fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);">
+
+                <Button onAction="#addCar" style="-fx-padding: 8 15; -fx-font-size: 13px;" styleClass="btn-success" text="➕ Добавить" />
+
+                <Button onAction="#editCar" style="-fx-padding: 8 15; -fx-font-size: 13px;" styleClass="btn-info" text="✏ Редактировать" />
+
+                <Button onAction="#deleteCar" style="-fx-padding: 8 15; -fx-font-size: 13px;" styleClass="btn-danger" text="🗑 Удалить" />
+
+                <Separator orientation="VERTICAL" />
+
+                <Button onAction="#exportToCSV" style="-fx-padding: 8 15; -fx-font-size: 13px;" styleClass="btn-primary" text="💾 Экспорт CSV" />
+
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
+            <FlowPane fx:id="cardsContainer" alignment="TOP_LEFT" hgap="25" style="-fx-padding: 25; -fx-background-color: #FAFAFA;" vgap="25" />
+        </ScrollPane>
+    </center>
+</BorderPane>

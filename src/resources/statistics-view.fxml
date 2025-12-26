@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane style="-fx-background-color: #FAFAFA;" stylesheets="@styles/main.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StatisticsController">
+
+    <top>
+        <!-- Градиентный хедер -->
+        <HBox alignment="CENTER_LEFT" spacing="15" styleClass="header-bar">
+
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-size: 32px;" text="📊" />
+                <Label style="-fx-font-size: 22px;" styleClass="welcome-message" text="Статистика и аналитика" />
+            </HBox>
+
+            <Region HBox.hgrow="ALWAYS" />
+
+            <Button onAction="#refreshStatistics" style="-fx-font-size: 15px; -fx-padding: 10 15;" styleClass="btn-icon" text="🔄 Обновить" />
+
+            <Button onAction="#backToMain" style="-fx-font-size: 15px; -fx-padding: 10 15;" styleClass="btn-icon" text="🔙 Назад" />
+
+            <Button onAction="#logout" style="-fx-padding: 8 15;" styleClass="btn-light" text="🚪 Выход" />
+
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
+            <VBox spacing="25" style="-fx-padding: 25;">
+
+                <!-- Основные показатели -->
+                <VBox spacing="15">
+                    <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;" text="📈 Основные показатели" />
+
+                    <GridPane hgap="20" vgap="20">
+                        <!-- Карточка: Всего автомобилей -->
+                        <VBox alignment="CENTER" spacing="12" style="-fx-background-radius: 12; -fx-padding: 25; -fx-min-width: 200; -fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                            <Label style="-fx-font-size: 48px;" text="🚗" />
+                            <Label style="-fx-font-size: 13px; -fx-font-weight: 600; -fx-text-fill: #444;" text="Всего автомобилей" />
+                            <Label fx:id="totalCarsLabel" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #2196F3;" text="0" />
+                        </VBox>
+
+                        <!-- Карточка: Средняя цена -->
+                        <VBox alignment="CENTER" spacing="12" style="-fx-background-radius: 12; -fx-padding: 25; -fx-min-width: 200; -fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                            <Label style="-fx-font-size: 48px;" text="💰" />
+                            <Label style="-fx-font-size: 13px; -fx-font-weight: 600; -fx-text-fill: #444;" text="Средняя цена" />
+                            <Label fx:id="avgPriceLabel" style="-fx-font-size: 30px; -fx-font-weight: bold; -fx-text-fill: #4CAF50;" text="₸ 0" />
+                        </VBox>
+
+                        <!-- Карточка: Всего пользователей -->
+                        <VBox alignment="CENTER" spacing="12" style="-fx-background-radius: 12; -fx-padding: 25; -fx-min-width: 200; -fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                            <Label style="-fx-font-size: 48px;" text="👥" />
+                            <Label style="-fx-font-size: 13px; -fx-font-weight: 600; -fx-text-fill: #444;" text="Всего пользователей" />
+                            <Label fx:id="totalUsersLabel" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #FF9800;" text="0" />
+                        </VBox>
+
+                        <!-- Карточка: Средний пробег -->
+                        <VBox alignment="CENTER" spacing="12" style="-fx-background-radius: 12; -fx-padding: 25; -fx-min-width: 200; -fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);" GridPane.columnIndex="3" GridPane.rowIndex="0">
+                            <Label style="-fx-font-size: 48px;" text="🛣️" />
+                            <Label style="-fx-font-size: 13px; -fx-font-weight: 600; -fx-text-fill: #444;" text="Средний пробег" />
+                            <Label fx:id="avgMileageLabel" style="-fx-font-size: 30px; -fx-font-weight: bold; -fx-text-fill: #9C27B0;" text="0 км" />
+                        </VBox>
+                  <columnConstraints>
+                     <ColumnConstraints />
+                     <ColumnConstraints />
+                     <ColumnConstraints />
+                     <ColumnConstraints />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints />
+                  </rowConstraints>
+                    </GridPane>
+                </VBox>
+
+                <!-- Экстремумы -->
+                <VBox spacing="15">
+                    <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;" text="💎 Экстремумы" />
+
+                    <HBox spacing="20">
+                        <!-- Самое дорогое -->
+                        <VBox spacing="12" style="-fx-background-radius: 12; -fx-padding: 25; -fx-background-color: linear-gradient(to bottom right, #fff5f5, #ffffff);" styleClass="card" HBox.hgrow="ALWAYS">
+                            <HBox alignment="CENTER_LEFT" spacing="8">
+                                <Label style="-fx-font-size: 24px;" text="💎" />
+                                <Label style="-fx-font-size: 17px; -fx-font-weight: bold; -fx-text-fill: #E91E63;" text="Самое дорогое авто" />
+                            </HBox>
+                            <Label fx:id="mostExpensiveLabel" style="-fx-font-size: 15px; -fx-text-fill: #333;" text="—" wrapText="true" />
+                            <Label fx:id="mostExpensivePriceLabel" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #E91E63;" text="₸ 0" />
+                        </VBox>
+
+                        <!-- Самое дешёвое -->
+                        <VBox spacing="12" style="-fx-background-radius: 12; -fx-padding: 25; -fx-background-color: linear-gradient(to bottom right, #f5fff5, #ffffff);" styleClass="card" HBox.hgrow="ALWAYS">
+                            <HBox alignment="CENTER_LEFT" spacing="8">
+                                <Label style="-fx-font-size: 24px;" text="💵" />
+                                <Label style="-fx-font-size: 17px; -fx-font-weight: bold; -fx-text-fill: #4CAF50;" text="Самое дешёвое авто" />
+                            </HBox>
+                            <Label fx:id="cheapestLabel" style="-fx-font-size: 15px; -fx-text-fill: #333;" text="—" wrapText="true" />
+                            <Label fx:id="cheapestPriceLabel" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #4CAF50;" text="₸ 0" />
+                        </VBox>
+                    </HBox>
+                </VBox>
+
+                <!-- Популярные бренды -->
+                <VBox spacing="15" style="-fx-background-radius: 12; -fx-padding: 25;" styleClass="card">
+                    <HBox alignment="CENTER_LEFT" spacing="8">
+                        <Label style="-fx-font-size: 24px;" text="🏆" />
+                        <Label style="-fx-font-size: 17px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Топ-5 популярных брендов" />
+                    </HBox>
+                    <VBox fx:id="topBrandsContainer" spacing="12">
+                        <Label style="-fx-font-size: 14px; -fx-text-fill: #999;" text="Загрузка..." />
+                    </VBox>
+                </VBox>
+
+                <!-- Дополнительная статистика -->
+                <VBox spacing="15">
+                    <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;" text="📋 Дополнительно" />
+
+                    <GridPane hgap="20" vgap="20">
+                        <!-- Строка 0 -->
+                        <VBox alignment="CENTER_LEFT" spacing="8" style="-fx-background-radius: 12; -fx-padding: 20; -fx-min-width: 180; -fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                            <Label style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #555;" text="👑 Администраторов" />
+                            <Label fx:id="totalAdminsLabel" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #FF5722;" text="0" />
+                        </VBox>
+
+                        <VBox alignment="CENTER_LEFT" spacing="8" style="-fx-background-radius: 12; -fx-padding: 20; -fx-min-width: 180; -fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                            <Label style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #555;" text="❤️ Всего избранных" />
+                            <Label fx:id="totalFavoritesLabel" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #E91E63;" text="0" />
+                        </VBox>
+
+                        <VBox alignment="CENTER_LEFT" spacing="8" style="-fx-background-radius: 12; -fx-padding: 20; -fx-min-width: 180; -fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                            <Label style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #555;" text="✅ Активные пользователи" />
+                            <Label fx:id="totalActiveUsersLabel" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #4CAF50;" text="0" />
+                        </VBox>
+
+                        <VBox alignment="CENTER_LEFT" spacing="8" style="-fx-background-radius: 12; -fx-padding: 20; -fx-min-width: 180; -fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);" GridPane.columnIndex="3" GridPane.rowIndex="0">
+                            <Label style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #555;" text="❌ Неактивные пользователи" />
+                            <Label fx:id="totalInactiveUsersLabel" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #999;" text="0" />
+                        </VBox>
+
+                        <!-- Строка 1 -->
+                        <VBox alignment="CENTER_LEFT" spacing="8" style="-fx-background-radius: 12; -fx-padding: 20; -fx-min-width: 180; -fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                            <Label style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #555;" text="📅 Бронирований" />
+                            <Label fx:id="totalReservationsLabel" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2196F3;" text="0" />
+                        </VBox>
+
+                        <VBox alignment="CENTER_LEFT" spacing="8" style="-fx-background-radius: 12; -fx-padding: 20; -fx-min-width: 180; -fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <Label style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #555;" text="🛒 Покупок" />
+                            <Label fx:id="totalPurchasesLabel" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #FF9800;" text="0" />
+                        </VBox>
+
+                        <VBox alignment="CENTER_LEFT" spacing="8" style="-fx-background-radius: 12; -fx-padding: 20; -fx-min-width: 180; -fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                            <Label style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #555;" text="💬 Комментариев" />
+                            <Label fx:id="totalCommentsLabel" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #9C27B0;" text="0" />
+                        </VBox>
+
+                        <VBox alignment="CENTER_LEFT" spacing="8" style="-fx-background-radius: 12; -fx-padding: 20; -fx-min-width: 180; -fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                            <Label style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #555;" text="⭐ Оценок" />
+                            <Label fx:id="totalRatingsLabel" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #FFC107;" text="0" />
+                        </VBox>
+
+                  <columnConstraints>
+                     <ColumnConstraints />
+                     <ColumnConstraints />
+                     <ColumnConstraints />
+                     <ColumnConstraints />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints />
+                     <RowConstraints />
+                  </rowConstraints>
+                    </GridPane>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

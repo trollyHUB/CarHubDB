@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane style="-fx-background-color: #FAFAFA;" stylesheets="@styles/main.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FavoritesController">
+
+    <top>
+        <VBox spacing="0">
+            <!-- Градиентный хедер -->
+            <HBox alignment="CENTER_LEFT" spacing="15" styleClass="header-bar">
+
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label style="-fx-font-size: 32px;" text="❤" />
+                    <Label style="-fx-font-size: 22px;" styleClass="welcome-message" text="Избранное" />
+                </HBox>
+
+                <Region HBox.hgrow="ALWAYS" />
+
+                <Label fx:id="countLabel" style="-fx-font-size: 14px; -fx-padding: 6 12;" styleClass="badge" text="0 автомобилей" />
+
+                <Button onAction="#backToCatalog" style="-fx-font-size: 15px; -fx-padding: 10 15;" styleClass="btn-icon" text="🔙 Назад" />
+
+                <Button onAction="#logout" style="-fx-padding: 8 15;" styleClass="btn-light" text="🚪 Выход" />
+
+            </HBox>
+
+            <!-- Панель действий -->
+            <HBox alignment="CENTER_LEFT" spacing="12" style="-fx-padding: 12; -fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);">
+
+                <Label style="-fx-text-fill: #666; -fx-font-size: 13px; -fx-font-style: italic;" text="💡 Совет: Добавляйте понравившиеся автомобили в избранное для быстрого доступа" />
+
+                <Region HBox.hgrow="ALWAYS" />
+
+                <Button onAction="#clearAllFavorites" style="-fx-padding: 8 15; -fx-font-size: 13px;" styleClass="btn-danger" text="🗑 Очистить всё" />
+
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
+            <VBox fx:id="contentBox" alignment="TOP_CENTER" spacing="25" style="-fx-padding: 25;">
+
+                <FlowPane fx:id="favoritesContainer" alignment="TOP_LEFT" hgap="25" style="-fx-background-color: #FAFAFA;" vgap="25" />
+
+                <!-- Пустое состояние -->
+                <VBox fx:id="emptyLabel" alignment="CENTER" managed="false" spacing="15" style="-fx-padding: 50;" visible="false">
+
+                    <Label style="-fx-font-size: 64px;" text="💔" />
+                    <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Пока нет избранных автомобилей" />
+                    <Label style="-fx-font-size: 14px; -fx-text-fill: #666;" text="Добавьте понравившиеся автомобили, нажав на ❤️" />
+                    <Button onAction="#backToCatalog" style="-fx-padding: 12 25; -fx-font-size: 15px;" styleClass="btn-primary" text="🔙 Вернуться к каталогу" />
+
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

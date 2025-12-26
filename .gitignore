@@ -1,0 +1,56 @@
+### IntelliJ IDEA ###
+.idea/
+out/
+*.iml
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+
+### JDK и JavaFX SDK (скачиваются отдельно) ###
+jdk/
+javafx-sdk/
+
+### Курсовая работа (не публикуется) ###
+Курсовая_работа/
+ОСНОВНОЙ КУРСОВОЙ/
+
+### Логи и временные файлы ###
+*.log
+carhub_logs.txt
+
+### Файлы заявок (создаются при работе) ###
+purchases.txt
+reservations.txt
+
+### Инструкции и заметки ###
+ИНСТРУКЦИЯ_ИСПРАВЛЕНИЯ.md
+КОНТЕКСТНОЕ_МЕНЮ_ИНСТРУКЦИЯ.md
+СТАТУС_ИСПРАВЛЕНИЙ.md
+ЧТО_Я_СДЕЛАЛ.md
+
+### Аватары пользователей (приватные данные) ###
+avatars/

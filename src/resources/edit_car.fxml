@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox spacing="20" style="-fx-background-color: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); -fx-padding: 30;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CarFormController">
+
+    <!-- Заголовок -->
+    <HBox alignment="CENTER" style="-fx-background-color: rgba(255,255,255,0.1); -fx-background-radius: 15; -fx-padding: 20;">
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;" text="✏ Редактировать автомобиль" textFill="#9b5353">
+            <font>
+                <Font name="System Bold" size="24" />
+            </font>
+        </Label>
+    </HBox>
+
+    <!-- Основная форма -->
+    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background: transparent; -fx-background-color: transparent;" vbarPolicy="AS_NEEDED">
+        <VBox spacing="15" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 30;">
+
+            <!-- Основные данные -->
+            <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #f5576c;" text="📋 Основные данные" />
+
+            <HBox spacing="15">
+                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                    <Label style="-fx-font-weight: bold; -fx-text-fill: #333;" text="Название *" />
+                    <TextField fx:id="nameField" promptText="Например: Mercedes-Benz" style="-fx-font-size: 14px; -fx-padding: 10; -fx-background-radius: 8; -fx-border-color: #ddd; -fx-border-radius: 8;" />
+                </VBox>
+
+                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                    <Label style="-fx-font-weight: bold; -fx-text-fill: #333;" text="Модель *" />
+                    <TextField fx:id="modelField" promptText="Например: S-Class" style="-fx-font-size: 14px; -fx-padding: 10; -fx-background-radius: 8; -fx-border-color: #ddd; -fx-border-radius: 8;" />
+                </VBox>
+            </HBox>
+
+            <HBox spacing="15">
+                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                    <Label style="-fx-font-weight: bold; -fx-text-fill: #333;" text="Бренд" />
+                    <TextField fx:id="brandField" promptText="Например: Mercedes" style="-fx-font-size: 14px; -fx-padding: 10; -fx-background-radius: 8; -fx-border-color: #ddd; -fx-border-radius: 8;" />
+                </VBox>
+
+                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                    <Label style="-fx-font-weight: bold; -fx-text-fill: #333;" text="Цена (₸) *" />
+                    <TextField fx:id="priceField" promptText="Например: 25000000" style="-fx-font-size: 14px; -fx-padding: 10; -fx-background-radius: 8; -fx-border-color: #ddd; -fx-border-radius: 8;" />
+                </VBox>
+            </HBox>
+
+            <HBox spacing="15">
+                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                    <Label style="-fx-font-weight: bold; -fx-text-fill: #333;" text="Год выпуска" />
+                    <TextField fx:id="yearField" promptText="Например: 2023" style="-fx-font-size: 14px; -fx-padding: 10; -fx-background-radius: 8; -fx-border-color: #ddd; -fx-border-radius: 8;" />
+                </VBox>
+
+                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                    <Label style="-fx-font-weight: bold; -fx-text-fill: #333;" text="Пробег (км)" />
+                    <TextField fx:id="mileageField" promptText="Например: 15000" style="-fx-font-size: 14px; -fx-padding: 10; -fx-background-radius: 8; -fx-border-color: #ddd; -fx-border-radius: 8;" />
+                </VBox>
+            </HBox>
+
+            <VBox spacing="8">
+                <Label style="-fx-font-weight: bold; -fx-text-fill: #333;" text="Описание" />
+                <TextArea fx:id="descriptionArea" prefRowCount="3" promptText="Дополнительная информация об автомобиле..." style="-fx-font-size: 14px; -fx-padding: 10; -fx-background-radius: 8; -fx-border-color: #ddd; -fx-border-radius: 8;" wrapText="true" />
+            </VBox>
+
+            <!-- Разделитель -->
+            <Separator style="-fx-background-color: #eee;" />
+
+            <!-- Галерея фотографий -->
+            <VBox spacing="15">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #f5576c;" text="📸 Галерея фотографий" />
+                    <Label fx:id="photosCountLabel" style="-fx-font-size: 14px; -fx-text-fill: #999;" text="(0 фото)" />
+                </HBox>
+
+                <Button onAction="#addPhotos" style="-fx-background-color: linear-gradient(to right, #f093fb, #f5576c); -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 12 30; -fx-background-radius: 10; -fx-cursor: hand;" text="➕ Добавить фотографии">
+                    <cursor><javafx.scene.Cursor fx:constant="HAND" /></cursor>
+                </Button>
+
+                <!-- Список выбранных фотографий -->
+                <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="200" style="-fx-background: transparent; -fx-background-color: #f9f9f9; -fx-background-radius: 10; -fx-padding: 10;" vbarPolicy="AS_NEEDED">
+                    <VBox fx:id="photosListBox" spacing="8" style="-fx-background-color: transparent;" />
+                </ScrollPane>
+
+                <Label style="-fx-font-size: 12px; -fx-text-fill: #666; -fx-font-style: italic;" text="💡 Первое фото автоматически станет главным. Вы можете изменить это, выбрав чекбокс 'Главное'." wrapText="true" />
+            </VBox>
+
+            <!-- Информация -->
+            <Label style="-fx-font-size: 12px; -fx-text-fill: #999; -fx-font-style: italic;" text="* - обязательные поля" />
+
+        </VBox>
+    </ScrollPane>
+
+    <!-- Кнопки действий -->
+    <HBox alignment="CENTER" spacing="15">
+        <Button onAction="#saveCar" prefWidth="200" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 15 30; -fx-background-radius: 10; -fx-cursor: hand;" text="✅ Сохранить изменения">
+            <cursor><javafx.scene.Cursor fx:constant="HAND" /></cursor>
+        </Button>
+
+        <Button onAction="#cancel" prefWidth="200" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 15 30; -fx-background-radius: 10; -fx-cursor: hand;" text="❌ Отмена">
+            <cursor><javafx.scene.Cursor fx:constant="HAND" /></cursor>
+        </Button>
+    </HBox>
+
+</VBox>

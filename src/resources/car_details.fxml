@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane fitToWidth="true" style="-fx-background-color: #FAFAFA; -fx-background: #FAFAFA;" stylesheets="@styles/main.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CarDetailsController">
+
+    <VBox spacing="20" style="-fx-padding: 25; -fx-background-color: #FAFAFA;">
+
+        <!-- Градиентный заголовок -->
+        <VBox style="-fx-background-radius: 12;" styleClass="gradient-header">
+            <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;" text="🚗 Информация об автомобиле" />
+        </VBox>
+
+        <!-- Основная информация с фото -->
+        <VBox spacing="15" styleClass="card">
+
+            <!-- 📸 ГАЛЕРЕЯ ФОТОГРАФИЙ -->
+            <VBox spacing="12">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #333;" text="📸 Фотографии" />
+                    <Label fx:id="photoIndexLabel" style="-fx-font-size: 14px; -fx-text-fill: #999;" text="1 / 1" />
+                </HBox>
+
+                <!-- Главное фото с кнопками навигации -->
+                <StackPane style="-fx-background-color: #f9f9f9; -fx-background-radius: 12;">
+                    <ImageView fx:id="imageView" fitHeight="320" fitWidth="500" preserveRatio="true" style="-fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(102,126,234,0.2), 15, 0, 0, 4);" />
+
+                    <!-- Кнопки навигации -->
+                    <HBox alignment="CENTER" spacing="400">
+                        <Button fx:id="prevPhotoBtn" onAction="#previousPhoto" style="-fx-background-color: rgba(0,0,0,0.6); -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 50; -fx-min-width: 40; -fx-min-height: 40; -fx-cursor: hand;" text="◀">
+                            <cursor><javafx.scene.Cursor fx:constant="HAND" /></cursor>
+                        </Button>
+
+                        <Button fx:id="nextPhotoBtn" onAction="#nextPhoto" style="-fx-background-color: rgba(0,0,0,0.6); -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 50; -fx-min-width: 40; -fx-min-height: 40; -fx-cursor: hand;" text="▶">
+                            <cursor><javafx.scene.Cursor fx:constant="HAND" /></cursor>
+                        </Button>
+                    </HBox>
+                </StackPane>
+
+                <!-- Миниатюры (thumbnails) -->
+                <ScrollPane fx:id="thumbnailsPane" fitToHeight="true" hbarPolicy="AS_NEEDED" prefHeight="80" style="-fx-background: transparent; -fx-background-color: transparent;" vbarPolicy="NEVER">
+                    <HBox fx:id="thumbnailsContainer" spacing="10" style="-fx-padding: 5;" />
+                </ScrollPane>
+            </VBox>
+
+            <!-- Основные характеристики -->
+            <VBox spacing="12">
+
+                <!-- Название и модель -->
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label fx:id="nameLabel" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #333;" />
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Label fx:id="priceLabel" style="-fx-font-size: 26px;" styleClass="price-label" />
+                </HBox>
+
+                <Label fx:id="modelLabel" style="-fx-font-size: 16px; -fx-text-fill: #666;" />
+
+                <Separator />
+
+                <!-- Характеристики в сетке -->
+                <GridPane hgap="20" vgap="12">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="100" />
+                        <ColumnConstraints minWidth="200" />
+                        <ColumnConstraints minWidth="100" />
+                        <ColumnConstraints minWidth="200" />
+                    </columnConstraints>
+
+                    <!-- Строка 1 -->
+                    <Label style="-fx-font-weight: bold; -fx-text-fill: #666;" text="🏷 Бренд:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <Label fx:id="brandLabel" style="-fx-font-size: 15px;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                    <Label style="-fx-font-weight: bold; -fx-text-fill: #666;" text="📅 Год:" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                    <Label fx:id="yearLabel" style="-fx-font-size: 15px;" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+
+                    <!-- Строка 2 -->
+                    <Label style="-fx-font-weight: bold; -fx-text-fill: #666;" text="🛣 Пробег:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <Label fx:id="mileageLabel" style="-fx-font-size: 15px;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints />
+               </rowConstraints>
+                </GridPane>
+
+                <!-- Описание -->
+                <VBox spacing="8" style="-fx-padding: 10 0 0 0;">
+                    <Label style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #333;" text="📝 Описание:" />
+                    <Label fx:id="descriptionLabel" style="-fx-font-size: 14px; -fx-text-fill: #666; -fx-line-spacing: 2px;" wrapText="true" />
+                </VBox>
+            </VBox>
+        </VBox>
+
+        <!-- ⭐ РЕЙТИНГ И ОЦЕНКИ -->
+        <VBox spacing="15" styleClass="card">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-size: 24px;" text="⭐" />
+                <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Рейтинг и оценки" />
+            </HBox>
+
+            <Separator />
+
+            <!-- Средний рейтинг -->
+            <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: #FFF8E1; -fx-padding: 15; -fx-background-radius: 10;">
+                <Label fx:id="averageRatingLabel" style="-fx-font-size: 48px; -fx-font-weight: bold; -fx-text-fill: #FF9800;" text="0.0" />
+                <VBox spacing="8">
+                    <HBox fx:id="starsBox" spacing="3" />
+                    <Label fx:id="ratingsCountLabel" style="-fx-text-fill: #666; -fx-font-size: 14px;" text="(0 оценок)" />
+                </VBox>
+            </HBox>
+
+            <!-- Поставить оценку -->
+            <VBox fx:id="ratingInputBox" spacing="10" style="-fx-background-color: #F5F5F5; -fx-padding: 15; -fx-background-radius: 10;">
+                <Label style="-fx-font-weight: bold; -fx-font-size: 15px;" text="Оцените этот автомобиль:" />
+                <HBox alignment="CENTER_LEFT" spacing="8">
+                    <Button fx:id="star1Btn" onAction="#rateCar" styleClass="star-button" text="⭐" />
+                    <Button fx:id="star2Btn" onAction="#rateCar" styleClass="star-button" text="⭐" />
+                    <Button fx:id="star3Btn" onAction="#rateCar" styleClass="star-button" text="⭐" />
+                    <Button fx:id="star4Btn" onAction="#rateCar" styleClass="star-button" text="⭐" />
+                    <Button fx:id="star5Btn" onAction="#rateCar" styleClass="star-button" text="⭐" />
+                </HBox>
+            </VBox>
+        </VBox>
+
+        <!-- 💬 КОММЕНТАРИИ -->
+        <VBox spacing="15" styleClass="card">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-size: 24px;" text="💬" />
+                <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Комментарии" />
+                <Label fx:id="commentsCountLabel" style="-fx-font-size: 13px;" styleClass="badge-info" text="(0)" />
+            </HBox>
+
+            <Separator />
+
+            <!-- Форма добавления комментария -->
+            <VBox fx:id="commentInputBox" spacing="10" style="-fx-background-color: #F5F5F5; -fx-padding: 15; -fx-background-radius: 10;">
+                <Label style="-fx-font-weight: bold; -fx-font-size: 14px;" text="Написать комментарий:" />
+                <TextArea fx:id="commentTextArea" prefRowCount="3" promptText="Поделитесь своим мнением об этом автомобиле..." style="-fx-font-size: 14px;" wrapText="true" />
+                <HBox spacing="10">
+                    <Button onAction="#addComment" styleClass="btn-success" text="📝 Отправить" />
+                    <Button onAction="#clearComment" styleClass="btn-light" text="Очистить" />
+                </HBox>
+            </VBox>
+
+            <!-- Список комментариев -->
+            <VBox fx:id="commentsListBox" spacing="12" />
+        </VBox>
+
+        <!-- 🚗 БРОНИРОВАНИЕ И ПОКУПКА -->
+        <VBox fx:id="actionsBox" spacing="15" styleClass="card">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-size: 24px;" text="🚗" />
+                <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Действия с автомобилем" />
+            </HBox>
+
+            <Separator />
+
+            <HBox alignment="CENTER" spacing="15">
+                <Button onAction="#openReservationForm" style="-fx-padding: 15 30; -fx-font-size: 16px;" styleClass="btn-info" text="📅 Забронировать" />
+                <Button onAction="#openPurchaseForm" style="-fx-padding: 15 30; -fx-font-size: 16px;" styleClass="btn-success" text="💰 Купить автомобиль" />
+            </HBox>
+
+            <Label style="-fx-text-fill: #666; -fx-font-size: 13px; -fx-font-style: italic; -fx-padding: 5 0 0 0;" text="💡 После отправки заявки с вами свяжется менеджер" />
+        </VBox>
+
+        <!-- Кнопка закрыть -->
+        <HBox alignment="CENTER" style="-fx-padding: 10 0 0 0;">
+            <Button onAction="#close" style="-fx-padding: 10 30; -fx-font-size: 14px;" styleClass="btn-light" text="✖ Закрыть" />
+        </HBox>
+
+    </VBox>
+</ScrollPane>

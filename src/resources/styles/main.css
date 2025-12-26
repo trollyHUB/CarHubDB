@@ -1,0 +1,607 @@
+/* 🎨 CARHUB - ГЛАВНЫЙ ФАЙЛ СТИЛЕЙ */
+
+/* ============================================
+   ЦВЕТОВАЯ СХЕМА
+   ============================================ */
+
+* {
+    -primary-color: #667eea;
+    -primary-dark: #5568d3;
+    -accent-color: #764ba2;
+    -success-color: #56ab2f;
+    -success-light: #a8e063;
+    -danger-color: #eb3349;
+    -danger-light: #f45c43;
+    -warning-color: #FF9800;
+    -info-color: #2196F3;
+
+    -bg-light: #FAFAFA;
+    -bg-white: #FFFFFF;
+    -bg-dark: #263238;
+    -text-primary: #333333;
+    -text-secondary: #666666;
+    -text-light: #999999;
+}
+
+/* ============================================
+   ОСНОВНОЙ ФОН
+   ============================================ */
+
+.root {
+    -fx-background-color: -bg-light;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-size: 14px;
+}
+
+/* ============================================
+   ГРАДИЕНТНЫЕ ФОНЫ
+   ============================================ */
+
+.gradient-background {
+    -fx-background-color: linear-gradient(to bottom right, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-header {
+    -fx-background-color: linear-gradient(to right, #667eea 0%, #764ba2 100%);
+    -fx-padding: 15;
+}
+
+.gradient-card {
+    -fx-background-color: linear-gradient(to bottom, #ffffff 0%, #f5f5f5 100%);
+}
+
+/* ============================================
+   КНОПКИ
+   ============================================ */
+
+.button {
+    -fx-background-radius: 8;
+    -fx-padding: 10 20 10 20;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-border-width: 0;
+}
+
+/* Главная кнопка (Primary) */
+.btn-primary {
+    -fx-background-color: linear-gradient(to right, #667eea 0%, #764ba2 100%);
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.4), 15, 0, 0, 4);
+}
+
+.btn-primary:hover {
+    -fx-background-color: linear-gradient(to right, #5568d3 0%, #6a3d8f 100%);
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.6), 20, 0, 0, 6);
+    -fx-translate-y: -2;
+}
+
+.btn-primary:pressed {
+    -fx-background-color: linear-gradient(to right, #4a5ab8 0%, #5a337a 100%);
+    -fx-translate-y: 0;
+}
+
+/* Кнопка успеха (Success) */
+.btn-success {
+    -fx-background-color: linear-gradient(to right, #56ab2f 0%, #a8e063 100%);
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(86, 171, 47, 0.4), 15, 0, 0, 4);
+}
+
+.btn-success:hover {
+    -fx-background-color: linear-gradient(to right, #4a9628 0%, #95ca54 100%);
+    -fx-effect: dropshadow(gaussian, rgba(86, 171, 47, 0.6), 20, 0, 0, 6);
+    -fx-translate-y: -2;
+}
+
+/* Кнопка удаления (Danger) */
+.btn-danger {
+    -fx-background-color: linear-gradient(to right, #eb3349 0%, #f45c43 100%);
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(235, 51, 73, 0.4), 15, 0, 0, 4);
+}
+
+.btn-danger:hover {
+    -fx-background-color: linear-gradient(to right, #d42d3f 0%, #dd4e39 100%);
+    -fx-effect: dropshadow(gaussian, rgba(235, 51, 73, 0.6), 20, 0, 0, 6);
+    -fx-translate-y: -2;
+}
+
+/* Кнопка информации (Info) */
+.btn-info {
+    -fx-background-color: linear-gradient(to right, #2196F3 0%, #21CBF3 100%);
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(33, 150, 243, 0.4), 15, 0, 0, 4);
+}
+
+.btn-info:hover {
+    -fx-background-color: linear-gradient(to right, #1e88e5 0%, #1db8e0 100%);
+    -fx-effect: dropshadow(gaussian, rgba(33, 150, 243, 0.6), 20, 0, 0, 6);
+    -fx-translate-y: -2;
+}
+
+/* Светлая кнопка */
+.btn-light {
+    -fx-background-color: #f5f5f5;
+    -fx-text-fill: #333333;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 2);
+}
+
+.btn-light:hover {
+    -fx-background-color: #e0e0e0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 15, 0, 0, 4);
+    -fx-translate-y: -2;
+}
+
+/* Кнопка с иконкой */
+.btn-icon {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-padding: 8;
+    -fx-background-radius: 50%;
+}
+
+.btn-icon:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================
+   LANDING PAGE КНОПКИ
+   ============================================ */
+
+/* Кнопки навигации в хедере */
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-padding: 8 15;
+    -fx-cursor: hand;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-background-radius: 5;
+}
+
+.nav-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.nav-button:pressed {
+    -fx-background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Кнопка Войти */
+.login-button {
+    -fx-background-color: white;
+    -fx-text-fill: #667eea;
+    -fx-padding: 10 20;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-font-weight: 600;
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8, 0, 0, 2);
+}
+
+.login-button:hover {
+    -fx-background-color: #f0f0f0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 12, 0, 0, 4);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.login-button:pressed {
+    -fx-background-color: #e0e0e0;
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+/* Кнопка Смотреть каталог */
+.catalog-button {
+    -fx-background-color: white;
+    -fx-text-fill: #667eea;
+    -fx-font-size: 15px;
+    -fx-padding: 14 30;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 12, 0, 0, 4);
+}
+
+.catalog-button:hover {
+    -fx-background-color: #f8f9ff;
+    -fx-effect: dropshadow(gaussian, rgba(102,126,234,0.4), 18, 0, 0, 6);
+    -fx-scale-x: 1.08;
+    -fx-scale-y: 1.08;
+}
+
+.catalog-button:pressed {
+    -fx-background-color: #e8e9ff;
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}
+
+/* Кнопка Регистрация */
+.register-button {
+    -fx-background-color: rgba(255,255,255,0.2);
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-padding: 14 30;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+}
+
+.register-button:hover {
+    -fx-background-color: rgba(255,255,255,0.3);
+    -fx-border-color: white;
+    -fx-scale-x: 1.08;
+    -fx-scale-y: 1.08;
+}
+
+.register-button:pressed {
+    -fx-background-color: rgba(255,255,255,0.4);
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}
+
+/* ============================================
+   ТЕКСТОВЫЕ ПОЛЯ
+   ============================================ */
+
+.text-field, .password-field, .text-area {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 8;
+    -fx-border-width: 2;
+    -fx-padding: 12;
+    -fx-font-size: 14px;
+    -fx-text-fill: -text-primary;
+    -fx-prompt-text-fill: -text-light;
+}
+
+.text-field:focused, .password-field:focused, .text-area:focused {
+    -fx-border-color: -primary-color;
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.3), 10, 0, 0, 0);
+}
+
+/* Поле поиска */
+.search-field {
+    -fx-background-color: rgba(255, 255, 255, 0.9);
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-padding: 8 15 8 15;
+    -fx-prompt-text-fill: -text-light;
+}
+
+.search-field:focused {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 15, 0, 0, 2);
+}
+
+/* ============================================
+   КАРТОЧКИ
+   ============================================ */
+
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 2);
+    -fx-padding: 20;
+}
+
+.card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 20, 0, 0, 8);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+/* Карточка автомобиля */
+.car-card {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.08), 12, 0, 0, 4);
+    -fx-padding: 15;
+}
+
+.car-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.3), 25, 0, 0, 10);
+    -fx-translate-y: -5;
+}
+
+/* ============================================
+   ЗАГОЛОВКИ И ТЕКСТ
+   ============================================ */
+
+.title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.subtitle {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -text-primary;
+}
+
+.label-primary {
+    -fx-text-fill: -primary-color;
+    -fx-font-weight: bold;
+}
+
+.label-success {
+    -fx-text-fill: -success-color;
+    -fx-font-weight: bold;
+}
+
+.label-danger {
+    -fx-text-fill: -danger-color;
+    -fx-font-weight: bold;
+}
+
+.label-secondary {
+    -fx-text-fill: -text-secondary;
+    -fx-font-size: 13px;
+}
+
+.label-light {
+    -fx-text-fill: -text-light;
+    -fx-font-size: 12px;
+}
+
+/* Цена */
+.price-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2196F3;
+}
+
+/* ============================================
+   ТАБЛИЦЫ
+   ============================================ */
+
+.table-view {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 2);
+}
+
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(to bottom, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-font-weight: bold;
+    -fx-text-fill: -text-primary;
+}
+
+.table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #fafafa;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: linear-gradient(to right, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+}
+
+.table-row-cell:hover {
+    -fx-background-color: rgba(102, 126, 234, 0.1);
+}
+
+/* ============================================
+   SCROLL BAR
+   ============================================ */
+
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: rgba(102, 126, 234, 0.5);
+    -fx-background-radius: 10;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: rgba(102, 126, 234, 0.8);
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+}
+
+/* ============================================
+   SEPARATOR
+   ============================================ */
+
+.separator {
+    -fx-background-color: #e0e0e0;
+}
+
+/* ============================================
+   COMBO BOX
+   ============================================ */
+
+.combo-box {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 8;
+    -fx-border-width: 2;
+}
+
+.combo-box:focused {
+    -fx-border-color: -primary-color;
+}
+
+/* ============================================
+   DATE PICKER
+   ============================================ */
+
+.date-picker {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 8;
+    -fx-border-width: 2;
+}
+
+.date-picker:focused {
+    -fx-border-color: -primary-color;
+}
+
+/* ============================================
+   DIALOG / MODAL
+   ============================================ */
+
+.dialog-pane {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 30, 0, 0, 10);
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: linear-gradient(to right, #667eea 0%, #764ba2 100%);
+    -fx-padding: 20;
+}
+
+.dialog-pane .content {
+    -fx-padding: 20;
+}
+
+/* ============================================
+   ИЗБРАННОЕ (FAVORITE)
+   ============================================ */
+
+.favorite-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ccc;
+    -fx-font-size: 24px;
+    -fx-cursor: hand;
+}
+
+.favorite-button:hover {
+    -fx-text-fill: #E91E63;
+}
+
+.favorite-button.active {
+    -fx-text-fill: #E91E63;
+}
+
+/* ============================================
+   РЕЙТИНГ (STARS)
+   ============================================ */
+
+.star-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ccc;
+    -fx-font-size: 20px;
+    -fx-cursor: hand;
+    -fx-padding: 2;
+}
+
+.star-button:hover {
+    -fx-text-fill: #FF9800;
+}
+
+.star-button.active {
+    -fx-text-fill: #FF9800;
+}
+
+/* ============================================
+   BADGE / МЕТКА
+   ============================================ */
+
+.badge {
+    -fx-background-color: #E91E63;
+    -fx-text-fill: white;
+    -fx-background-radius: 12;
+    -fx-padding: 4 8 4 8;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.badge-success {
+    -fx-background-color: #4CAF50;
+}
+
+.badge-warning {
+    -fx-background-color: #FF9800;
+}
+
+.badge-danger {
+    -fx-background-color: #F44336;
+}
+
+.badge-info {
+    -fx-background-color: #2196F3;
+}
+
+/* ============================================
+   АНИМАЦИИ
+   ============================================ */
+
+.fade-in {
+    -fx-opacity: 0;
+}
+
+/* ============================================
+   СПЕЦИАЛЬНЫЕ ЭЛЕМЕНТЫ
+   ============================================ */
+
+.header-bar {
+    -fx-background-color: linear-gradient(to right, #667eea 0%, #764ba2 100%);
+    -fx-padding: 15;
+    -fx-spacing: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 2);
+}
+
+.welcome-message {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.stats-card {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 2);
+}
+
+.stats-value {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -primary-color;
+}
+
+.stats-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: -text-secondary;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+.container {
+    -fx-padding: 20;
+    -fx-spacing: 20;
+}
+
+.section {
+    -fx-padding: 15;
+    -fx-spacing: 10;
+}
+

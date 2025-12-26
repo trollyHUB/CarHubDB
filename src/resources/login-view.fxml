@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="600" prefWidth="500" stylesheets="@styles/main.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+
+    <!-- Градиентный фон -->
+    <VBox alignment="CENTER" styleClass="gradient-background" VBox.vgrow="ALWAYS">
+
+        <!-- Кнопка "На главную" -->
+        <HBox alignment="TOP_LEFT" style="-fx-padding: 15;">
+            <Button onAction="#backToLanding" style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-padding: 8 15; -fx-background-radius: 8; -fx-cursor: hand; -fx-font-size: 13px;" text="🏠 На главную" />
+        </HBox>
+
+        <!-- Логотип и название -->
+        <VBox alignment="CENTER" spacing="5" style="-fx-padding: 0 0 40 0;">
+            <Label style="-fx-font-size: 64px;" text="🚗" />
+            <Label style="-fx-font-size: 36px;" styleClass="title" text="CarHub" />
+            <Label style="-fx-text-fill: rgba(255,255,255,0.9); -fx-font-size: 16px;" text="Автосалон вашей мечты" />
+        </VBox>
+
+        <!-- Форма входа -->
+        <VBox alignment="CENTER" prefWidth="380" spacing="15" style="-fx-padding: 40 30 40 30;" styleClass="card">
+
+            <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Вход в систему" />
+
+            <!-- Поле логина -->
+            <VBox spacing="8">
+                <Label style="-fx-font-weight: bold; -fx-text-fill: #666;" text="👤 Логин" />
+                <TextField fx:id="usernameField" prefWidth="320" promptText="Введите логин" style="-fx-font-size: 14px;" />
+            </VBox>
+
+            <!-- Поле пароля -->
+            <VBox spacing="8">
+                <Label style="-fx-font-weight: bold; -fx-text-fill: #666;" text="🔒 Пароль" />
+                <PasswordField fx:id="passwordField" prefWidth="320" promptText="Введите пароль" style="-fx-font-size: 14px;" />
+            </VBox>
+
+            <!-- Кнопка входа -->
+            <Button onAction="#onLogin" prefHeight="45" prefWidth="320" style="-fx-font-size: 16px;" styleClass="btn-primary" text="🔑 ВОЙТИ" />
+
+            <!-- Сообщение об ошибке -->
+            <Label fx:id="messageLabel" maxWidth="320" style="-fx-text-fill: #F44336; -fx-font-weight: bold;" wrapText="true" />
+
+            <!-- Забыл пароль? -->
+            <HBox alignment="CENTER_RIGHT" prefWidth="320">
+                <Button onAction="#openForgotPassword" style="-fx-background-color: transparent; -fx-text-fill: #667eea; -fx-font-size: 12px; -fx-cursor: hand; -fx-underline: true;" text="🔐 Забыл пароль?" />
+            </HBox>
+
+            <!-- Ссылка на регистрацию -->
+            <VBox alignment="CENTER" spacing="10">
+                <Label style="-fx-text-fill: #666;" text="Нет аккаунта?" />
+                <Button onAction="#openRegisterPage" prefWidth="320" style="-fx-font-size: 14px;" styleClass="btn-light" text="📝 Регистрация" />
+            </VBox>
+
+        </VBox>
+
+        <!-- Копирайт -->
+        <Label style="-fx-text-fill: rgba(255,255,255,0.7); -fx-padding: 30 0 0 0; -fx-font-size: 12px;" text="© 2025 CarHub. Все права защищены." />
+
+    </VBox>
+
+</StackPane>

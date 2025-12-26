@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane style="-fx-background-color: #f5f5f5;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CarHubController">
+
+    <top>
+        <VBox spacing="10" style="-fx-padding: 15; -fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-size: 22px; -fx-font-weight: bold;" text="🚗 Каталог автомобилей CarHub" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button onAction="#openFavorites" style="-fx-background-color: #E91E63; -fx-text-fill: white; -fx-cursor: hand; -fx-font-size: 14px;" text="❤ Избранное" />
+                <Button onAction="#switchToTableView" style="-fx-background-color: #e0e0e0; -fx-cursor: hand;" text="📋 Таблица" />
+                <Button onAction="#switchToCardView" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-cursor: hand;" text="🎴 Карточки" />
+                <Button onAction="#logout" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-cursor: hand;" text="Выход" />
+            </HBox>
+            <TextField fx:id="searchField" prefWidth="600" promptText="🔍 Поиск автомобиля..." style="-fx-font-size: 14px;" />
+
+            <!-- Панель фильтров и сортировки -->
+            <VBox spacing="8" style="-fx-padding: 10; -fx-background-color: #f9f9f9; -fx-background-radius: 8;">
+                <Label style="-fx-font-weight: bold; -fx-font-size: 14px;" text="🔍 Фильтры и сортировка" />
+
+                <HBox alignment="CENTER_LEFT" spacing="15">
+                    <Label text="Сортировать:" />
+                    <Button fx:id="sortPriceBtn" onAction="#sortByPrice" style="-fx-cursor: hand;" text="По цене ↑" />
+                    <Button fx:id="sortYearBtn" onAction="#sortByYear" style="-fx-cursor: hand;" text="По году ↑" />
+                    <Button fx:id="sortMileageBtn" onAction="#sortByMileage" style="-fx-cursor: hand;" text="По пробегу ↑" />
+                    <Button onAction="#resetSort" style="-fx-background-color: #9E9E9E; -fx-text-fill: white; -fx-cursor: hand;" text="Сбросить" />
+
+                    <Separator orientation="VERTICAL" />
+
+                    <Label text="Бренд:" />
+                    <ComboBox fx:id="brandFilter" onAction="#applyFilters" prefWidth="150" promptText="Все бренды" />
+
+                    <Separator orientation="VERTICAL" />
+
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Label fx:id="countLabel" style="-fx-font-weight: bold; -fx-text-fill: #2196F3;" text="Найдено: 0" />
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT" spacing="15">
+                    <Label text="Цена (₸):" />
+                    <Label text="от" />
+                    <TextField fx:id="minPriceField" onKeyReleased="#applyFilters" prefWidth="100" promptText="0" />
+                    <Label text="до" />
+                    <TextField fx:id="maxPriceField" onKeyReleased="#applyFilters" prefWidth="100" promptText="∞" />
+
+                    <Separator orientation="VERTICAL" />
+
+                    <Label text="Год:" />
+                    <Label text="от" />
+                    <ComboBox fx:id="minYearFilter" onAction="#applyFilters" prefWidth="90" promptText="Любой" />
+                    <Label text="до" />
+                    <ComboBox fx:id="maxYearFilter" onAction="#applyFilters" prefWidth="90" promptText="Любой" />
+
+                    <Separator orientation="VERTICAL" />
+
+                    <Button onAction="#clearFilters" style="-fx-background-color: #607D8B; -fx-text-fill: white; -fx-cursor: hand;" text="Очистить фильтры 🗑" />
+                </HBox>
+            </VBox>
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: #f5f5f5; -fx-background: #f5f5f5;">
+            <FlowPane fx:id="cardsContainer" alignment="TOP_LEFT" hgap="20" style="-fx-padding: 20; -fx-background-color: #f5f5f5;" vgap="20" />
+        </ScrollPane>
+    </center>
+</BorderPane>

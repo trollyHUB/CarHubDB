@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane style="-fx-background-color: #f8f9fa;" stylesheets="@styles/main.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LandingController">
+
+    <!-- Хедер -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%, #667eea 0%, #764ba2 100%); -fx-padding: 15 30; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 2);">
+
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-size: 32px;" text="🚗" />
+                <VBox spacing="-5">
+                    <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;" text="CarHub" />
+                    <Label style="-fx-font-size: 11px; -fx-text-fill: rgba(255,255,255,0.9);" text="Premium Auto" />
+                </VBox>
+            </HBox>
+
+            <Region HBox.hgrow="ALWAYS" />
+
+            <HBox alignment="CENTER" spacing="15">
+                <Button onAction="#scrollToAbout" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-padding: 8 15; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: 600; -fx-background-radius: 5;" styleClass="nav-button" text="О нас" />
+                <Button onAction="#scrollToFeatures" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-padding: 8 15; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: 600; -fx-background-radius: 5;" styleClass="nav-button" text="Преимущества" />
+                <Button onAction="#scrollToContacts" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-padding: 8 15; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: 600; -fx-background-radius: 5;" styleClass="nav-button" text="Контакты" />
+                <Button onAction="#openLogin" style="-fx-background-color: white; -fx-text-fill: #667eea; -fx-padding: 10 20; -fx-background-radius: 8; -fx-cursor: hand; -fx-font-weight: 600; -fx-font-size: 14px;" styleClass="login-button" text="🔑 Войти" />
+            </HBox>
+
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fx:id="mainScrollPane" fitToHeight="true" fitToWidth="true" style="-fx-background: #f8f9fa; -fx-background-color: #f8f9fa;">
+            <VBox spacing="0" style="-fx-background-color: #f8f9fa;">
+
+                <!-- СЕКЦИЯ 1: HERO БАННЕР -->
+                <VBox alignment="CENTER" spacing="20" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #667eea 0%, #764ba2 100%); -fx-padding: 50 20 50 20;">
+
+                    <Label style="-fx-font-size: 50px;" text="🚗" />
+
+                    <VBox alignment="CENTER" spacing="10">
+                        <Label alignment="CENTER" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 2); -fx-text-alignment: center; -fx-max-width: 700;" text="Добро пожаловать в CarHub" wrapText="true" />
+                        <Label alignment="CENTER" style="-fx-font-size: 16px; -fx-text-fill: rgba(255,255,255,0.95); -fx-font-weight: 500; -fx-text-alignment: center; -fx-max-width: 600;" text="Ваш путь к автомобилю мечты начинается здесь" wrapText="true" />
+                    </VBox>
+
+                    <HBox alignment="CENTER" spacing="15">
+                        <Button onAction="#openCatalog" style="-fx-background-color: white; -fx-text-fill: #667eea; -fx-font-size: 15px; -fx-padding: 14 30; -fx-background-radius: 10; -fx-cursor: hand; -fx-font-weight: bold; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 12, 0, 0, 4);" styleClass="catalog-button" text="📋 Смотреть каталог" />
+                        <Button onAction="#openRegister" style="-fx-background-color: rgba(255,255,255,0.2); -fx-border-color: white; -fx-border-width: 2; -fx-border-radius: 10; -fx-background-radius: 10; -fx-text-fill: white; -fx-font-size: 15px; -fx-padding: 14 30; -fx-cursor: hand; -fx-font-weight: bold;" styleClass="register-button" text="👤 Регистрация" />
+                    </HBox>
+
+                    <!-- Статистика -->
+                    <HBox alignment="CENTER" spacing="60" style="-fx-padding: 40 0 0 0;">
+                        <VBox alignment="CENTER" spacing="5">
+                            <Label fx:id="totalCarsLabel" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: white;" text="500+" />
+                            <Label style="-fx-font-size: 14px; -fx-text-fill: rgba(255,255,255,0.9);" text="Автомобилей" />
+                        </VBox>
+                        <VBox alignment="CENTER" spacing="5">
+                            <Label fx:id="happyClientsLabel" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: white;" text="1000+" />
+                            <Label style="-fx-font-size: 14px; -fx-text-fill: rgba(255,255,255,0.9);" text="Довольных клиентов" />
+                        </VBox>
+                        <VBox alignment="CENTER" spacing="5">
+                            <Label style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: white;" text="5★" />
+                            <Label style="-fx-font-size: 14px; -fx-text-fill: rgba(255,255,255,0.9);" text="Средний рейтинг" />
+                        </VBox>
+                    </HBox>
+
+                </VBox>
+
+                <!-- СЕКЦИЯ 2: О НАС -->
+                <VBox fx:id="aboutSection" alignment="CENTER" spacing="40" style="-fx-background-color: #f8f9fa; -fx-padding: 60 30 60 30;">
+
+                    <VBox alignment="CENTER" maxWidth="900" spacing="10">
+                        <Label alignment="CENTER" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #333; -fx-text-alignment: center; -fx-max-width: 900;" text="О нашем автосалоне" wrapText="true" />
+                        <Label alignment="CENTER" style="-fx-font-size: 14px; -fx-text-fill: #666; -fx-text-alignment: center; -fx-max-width: 800;" text="Мы предлагаем лучшие автомобили по выгодным ценам" wrapText="true" />
+                    </VBox>
+
+                    <HBox alignment="CENTER" spacing="20">
+
+                        <VBox fx:id="card1" alignment="CENTER" maxWidth="320" minHeight="240" spacing="15" style="-fx-background-color: white; -fx-padding: 30; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 20, 0, 0, 5); -fx-cursor: hand;">
+                            <Label style="-fx-font-size: 48px;" text="🎯" />
+                            <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Наша миссия" />
+                            <Label alignment="CENTER" style="-fx-font-size: 14px; -fx-text-fill: #666; -fx-text-alignment: center;" text="Помочь каждому найти идеальный автомобиль, который соответствует его потребностям и бюджету." wrapText="true" />
+                        </VBox>
+
+                        <VBox fx:id="card2" alignment="CENTER" maxWidth="320" minHeight="240" spacing="15" style="-fx-background-color: white; -fx-padding: 30; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 20, 0, 0, 5); -fx-cursor: hand;">
+                            <Label style="-fx-font-size: 48px;" text="👨‍💼" />
+                            <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Наша команда" />
+                            <Label alignment="CENTER" style="-fx-font-size: 14px; -fx-text-fill: #666; -fx-text-alignment: center;" text="Опытные специалисты с многолетним стажем готовы проконсультировать вас по любым вопросам." wrapText="true" />
+                        </VBox>
+
+                        <VBox fx:id="card3" alignment="CENTER" maxWidth="320" minHeight="240" spacing="15" style="-fx-background-color: white; -fx-padding: 30; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 20, 0, 0, 5); -fx-cursor: hand;">
+                            <Label style="-fx-font-size: 48px;" text="💎" />
+                            <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Наши ценности" />
+                            <Label alignment="CENTER" style="-fx-font-size: 14px; -fx-text-fill: #666; -fx-text-alignment: center;" text="Честность, прозрачность и качественное обслуживание - основа нашей работы." wrapText="true" />
+                        </VBox>
+
+                    </HBox>
+
+                </VBox>
+
+                <!-- СЕКЦИЯ 3: ПРЕИМУЩЕСТВА -->
+                <VBox fx:id="featuresSection" alignment="CENTER" spacing="40" style="-fx-background-color: white; -fx-padding: 60 30 60 30;">
+
+                    <VBox alignment="CENTER" maxWidth="900" spacing="10">
+                        <Label alignment="CENTER" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #333; -fx-text-alignment: center; -fx-max-width: 900;" text="Почему выбирают нас?" wrapText="true" />
+                        <Label alignment="CENTER" style="-fx-font-size: 14px; -fx-text-fill: #666; -fx-text-alignment: center; -fx-max-width: 800;" text="Преимущества работы с CarHub" wrapText="true" />
+                    </VBox>
+
+                    <GridPane alignment="CENTER" hgap="30" vgap="30">
+
+                        <!-- Строка 1 -->
+                        <VBox fx:id="featureCard1" alignment="CENTER" spacing="15" style="-fx-background-color: #f8f9fa; -fx-padding: 35; -fx-background-radius: 12; -fx-pref-width: 320; -fx-min-height: 260; -fx-cursor: hand;" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                            <Label style="-fx-font-size: 50px;" text="✅" />
+                            <Label style="-fx-font-size: 21px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Проверенные авто" />
+                            <Label alignment="CENTER" style="-fx-font-size: 15px; -fx-text-fill: #666; -fx-text-alignment: center; -fx-max-width: 280;" text="Каждый автомобиль проходит тщательную проверку" wrapText="true" />
+                        </VBox>
+
+                        <VBox fx:id="featureCard2" alignment="CENTER" spacing="15" style="-fx-background-color: #f8f9fa; -fx-padding: 35; -fx-background-radius: 12; -fx-pref-width: 320; -fx-min-height: 260; -fx-cursor: hand;" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                            <Label style="-fx-font-size: 50px;" text="💰" />
+                            <Label style="-fx-font-size: 21px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Выгодные цены" />
+                            <Label alignment="CENTER" style="-fx-font-size: 15px; -fx-text-fill: #666; -fx-text-alignment: center; -fx-max-width: 280;" text="Лучшие предложения на рынке без накруток" wrapText="true" />
+                        </VBox>
+
+                        <VBox fx:id="featureCard3" alignment="CENTER" spacing="15" style="-fx-background-color: #f8f9fa; -fx-padding: 35; -fx-background-radius: 12; -fx-pref-width: 320; -fx-min-height: 260; -fx-cursor: hand;" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                            <Label style="-fx-font-size: 50px;" text="🔒" />
+                            <Label style="-fx-font-size: 21px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Безопасная сделка" />
+                            <Label alignment="CENTER" style="-fx-font-size: 15px; -fx-text-fill: #666; -fx-text-alignment: center; -fx-max-width: 280;" text="Все документы оформляются официально" wrapText="true" />
+                        </VBox>
+
+                        <!-- Строка 2 -->
+                        <VBox fx:id="featureCard4" alignment="CENTER" spacing="15" style="-fx-background-color: #f8f9fa; -fx-padding: 35; -fx-background-radius: 12; -fx-pref-width: 320; -fx-min-height: 260; -fx-cursor: hand;" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                            <Label style="-fx-font-size: 50px;" text="🚀" />
+                            <Label style="-fx-font-size: 21px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Быстрое оформление" />
+                            <Label alignment="CENTER" style="-fx-font-size: 15px; -fx-text-fill: #666; -fx-text-alignment: center; -fx-max-width: 280;" text="Покупка и регистрация за 1 день" wrapText="true" />
+                        </VBox>
+
+                        <VBox fx:id="featureCard5" alignment="CENTER" spacing="15" style="-fx-background-color: #f8f9fa; -fx-padding: 35; -fx-background-radius: 12; -fx-pref-width: 320; -fx-min-height: 260; -fx-cursor: hand;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <Label style="-fx-font-size: 50px;" text="🎁" />
+                            <Label style="-fx-font-size: 21px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Гарантия качества" />
+                            <Label alignment="CENTER" style="-fx-font-size: 15px; -fx-text-fill: #666; -fx-text-alignment: center; -fx-max-width: 280;" text="Гарантия на все автомобили от 6 месяцев" wrapText="true" />
+                        </VBox>
+
+                        <VBox fx:id="featureCard6" alignment="CENTER" spacing="15" style="-fx-background-color: #f8f9fa; -fx-padding: 35; -fx-background-radius: 12; -fx-pref-width: 320; -fx-min-height: 260; -fx-cursor: hand;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                            <Label style="-fx-font-size: 50px;" text="🤝" />
+                            <Label style="-fx-font-size: 21px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Поддержка 24/7" />
+                            <Label alignment="CENTER" style="-fx-font-size: 15px; -fx-text-fill: #666; -fx-text-alignment: center; -fx-max-width: 280;" text="Наша команда всегда на связи" wrapText="true" />
+                        </VBox>
+                  <columnConstraints>
+                     <ColumnConstraints />
+                     <ColumnConstraints />
+                     <ColumnConstraints />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints />
+                     <RowConstraints />
+                  </rowConstraints>
+
+                    </GridPane>
+
+                </VBox>
+
+                <!-- СЕКЦИЯ 4: КОНТАКТЫ -->
+                <VBox fx:id="contactsSection" alignment="CENTER" spacing="40" style="-fx-background-color: #f8f9fa; -fx-padding: 60 30 60 30;">
+
+                    <VBox alignment="CENTER" spacing="15">
+                        <Label style="-fx-font-size: 38px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Свяжитесь с нами" />
+                        <Label style="-fx-font-size: 16px; -fx-text-fill: #666;" text="Мы всегда рады помочь вам" />
+                    </VBox>
+
+                    <HBox alignment="CENTER" spacing="50">
+
+                        <VBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: white; -fx-padding: 40; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 20, 0, 0, 5); -fx-pref-width: 450;">
+
+                            <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #333;" text="📞 Контактная информация" />
+
+                            <VBox spacing="15">
+                                <HBox alignment="CENTER_LEFT" spacing="15">
+                                    <Label style="-fx-font-size: 24px; -fx-pref-width: 40;" text="📞" />
+                                    <VBox spacing="3">
+                                        <Label style="-fx-font-size: 12px; -fx-text-fill: #999;" text="Телефон:" />
+                                        <Label style="-fx-font-size: 16px; -fx-font-weight: 600; -fx-text-fill: #333;" text="+7 (701) 234-56-78" />
+                                    </VBox>
+                                </HBox>
+
+                                <HBox alignment="CENTER_LEFT" spacing="15">
+                                    <Label style="-fx-font-size: 24px; -fx-pref-width: 40;" text="📧" />
+                                    <VBox spacing="3">
+                                        <Label style="-fx-font-size: 12px; -fx-text-fill: #999;" text="Email:" />
+                                        <Label style="-fx-font-size: 16px; -fx-font-weight: 600; -fx-text-fill: #333;" text="info@carhub.kz" />
+                                    </VBox>
+                                </HBox>
+
+                                <HBox alignment="CENTER_LEFT" spacing="15">
+                                    <Label style="-fx-font-size: 24px; -fx-pref-width: 40;" text="📍" />
+                                    <VBox spacing="3">
+                                        <Label style="-fx-font-size: 12px; -fx-text-fill: #999;" text="Адрес:" />
+                                        <Label style="-fx-font-size: 16px; -fx-font-weight: 600; -fx-text-fill: #333;" text="г. Астана, пр. Мәңгілік Ел, 55/20" wrapText="true" />
+                                    </VBox>
+                                </HBox>
+
+                                <HBox alignment="CENTER_LEFT" spacing="15">
+                                    <Label style="-fx-font-size: 24px; -fx-pref-width: 40;" text="🕐" />
+                                    <VBox spacing="3">
+                                        <Label style="-fx-font-size: 12px; -fx-text-fill: #999;" text="Время работы:" />
+                                        <Label style="-fx-font-size: 16px; -fx-font-weight: 600; -fx-text-fill: #333;" text="Пн-Пт: 9:00 - 20:00" />
+                                        <Label style="-fx-font-size: 16px; -fx-font-weight: 600; -fx-text-fill: #333;" text="Сб-Вс: 10:00 - 18:00" />
+                                    </VBox>
+                                </HBox>
+                            </VBox>
+
+                        </VBox>
+
+                        <VBox alignment="CENTER" spacing="20" style="-fx-background-color: white; -fx-padding: 40; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 20, 0, 0, 5); -fx-pref-width: 450;">
+
+                            <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #333;" text="🌐 Социальные сети" />
+
+                            <VBox spacing="12">
+                                <Button maxWidth="Infinity" onAction="#openTelegram" style="-fx-background-color: #0088cc; -fx-text-fill: white; -fx-padding: 12 20; -fx-background-radius: 8; -fx-cursor: hand; -fx-font-size: 14px;" text="📱 Telegram: @carhub_astana" />
+                                <Button maxWidth="Infinity" onAction="#openFacebook" style="-fx-background-color: #1877f2; -fx-text-fill: white; -fx-padding: 12 20; -fx-background-radius: 8; -fx-cursor: hand; -fx-font-size: 14px;" text="📘 Facebook: /carhub.astana" />
+                                <Button maxWidth="Infinity" onAction="#openInstagram" style="-fx-background-color: #E4405F; -fx-text-fill: white; -fx-padding: 12 20; -fx-background-radius: 8; -fx-cursor: hand; -fx-font-size: 14px;" text="📷 Instagram: @carhub_astana" />
+                                <Button maxWidth="Infinity" onAction="#openYouTube" style="-fx-background-color: #FF0000; -fx-text-fill: white; -fx-padding: 12 20; -fx-background-radius: 8; -fx-cursor: hand; -fx-font-size: 14px;" text="🎥 YouTube: CarHub Astana" />
+                            </VBox>
+
+                            <Separator prefWidth="350" />
+
+                            <Label alignment="CENTER" style="-fx-font-size: 13px; -fx-text-fill: #666; -fx-text-alignment: center;" text="Подписывайтесь на нас и будьте в курсе всех новинок!" wrapText="true" />
+
+                        </VBox>
+
+                    </HBox>
+
+                </VBox>
+
+                <!-- ФУТЕР -->
+                <VBox alignment="CENTER" spacing="20" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #667eea 0%, #764ba2 100%); -fx-padding: 30 30 30 30;">
+
+                    <HBox alignment="CENTER" spacing="60">
+                        <VBox alignment="CENTER_LEFT" spacing="10">
+                            <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: white;" text="О компании" />
+                            <Label onMouseClicked="#openAboutUs" style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.9); -fx-cursor: hand;" text="О нас" />
+                            <Label onMouseClicked="#openVacancies" style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.9); -fx-cursor: hand;" text="Вакансии" />
+                            <Label onMouseClicked="#openReviews" style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.9); -fx-cursor: hand;" text="Отзывы" />
+                        </VBox>
+
+                        <VBox alignment="CENTER_LEFT" spacing="10">
+                            <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: white;" text="Покупателям" />
+                            <Label onMouseClicked="#openCatalogFromFooter" style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.9); -fx-cursor: hand;" text="Каталог" />
+                            <Label onMouseClicked="#openHowToBuy" style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.9); -fx-cursor: hand;" text="Как купить" />
+                            <Label onMouseClicked="#openTradeIn" style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.9); -fx-cursor: hand;" text="Trade-in" />
+                        </VBox>
+
+                        <VBox alignment="CENTER_LEFT" spacing="10">
+                            <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: white;" text="Поддержка" />
+                            <Label onMouseClicked="#scrollToContactsFromFooter" style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.9); -fx-cursor: hand;" text="Контакты" />
+                            <Label onMouseClicked="#openFAQ" style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.9); -fx-cursor: hand;" text="FAQ" />
+                            <Label onMouseClicked="#openWarranty" style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.9); -fx-cursor: hand;" text="Гарантия" />
+                        </VBox>
+                    </HBox>
+
+                    <Separator prefWidth="800" style="-fx-background-color: rgba(255,255,255,0.3);" />
+
+                    <VBox alignment="CENTER" spacing="8">
+                        <Label style="-fx-font-size: 13px; -fx-text-fill: rgba(255,255,255,0.9);" text="© 2025 CarHub Kazakhstan. Все права защищены." />
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: rgba(255,255,255,0.8);" text="🇰🇿 Сделано с ❤️ в Астане для автолюбителей Казахстана" />
+                    </VBox>
+
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

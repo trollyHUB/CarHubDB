@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<BorderPane style="-fx-background-color: #FAFAFA;" stylesheets="@styles/main.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ProfileController">
+
+    <top>
+        <!-- Градиентный хедер -->
+        <HBox alignment="CENTER_LEFT" spacing="15" styleClass="header-bar">
+
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-size: 32px;" text="👤" />
+                <Label style="-fx-font-size: 22px;" styleClass="welcome-message" text="Личный кабинет" />
+            </HBox>
+
+            <Region HBox.hgrow="ALWAYS" />
+
+            <Button onAction="#backToMain" style="-fx-font-size: 15px; -fx-padding: 10 15;" styleClass="btn-icon" text="🔙 Назад" />
+
+            <Button onAction="#logout" style="-fx-padding: 8 15;" styleClass="btn-light" text="🚪 Выход" />
+
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+            <VBox spacing="25" style="-fx-padding: 30;">
+
+                <!-- Карточка профиля -->
+                <VBox spacing="20" style="-fx-background-radius: 15; -fx-padding: 30; -fx-alignment: center;" styleClass="card">
+
+                    <!-- Аватар -->
+                    <StackPane>
+                        <!-- Круглый аватар -->
+                        <StackPane style="-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 15, 0, 0, 5);">
+                            <Circle fill="WHITE" radius="80" />
+                            <Circle fx:id="avatarClip" radius="75" />
+                            <ImageView fx:id="avatarImage" fitHeight="150" fitWidth="150" preserveRatio="false">
+                                <clip>
+                                    <Circle centerX="75" centerY="75" radius="75" />
+                                </clip>
+                            </ImageView>
+                        </StackPane>
+
+                        <!-- Кнопка загрузки аватара -->
+                        <Button fx:id="uploadAvatarBtn" onAction="#uploadAvatar" style="-fx-background-color: #667eea; -fx-text-fill: white; -fx-font-size: 20px; -fx-padding: 10; -fx-background-radius: 50; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 3);" text="📷" StackPane.alignment="BOTTOM_RIGHT">
+                            <StackPane.margin>
+                                <Insets left="90" />
+                            </StackPane.margin>
+                        </Button>
+                    </StackPane>
+
+                    <!-- Информация -->
+                    <VBox alignment="CENTER" spacing="8">
+                        <Label fx:id="usernameLabel" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Пользователь" />
+                        <Label fx:id="fullnameLabel" style="-fx-font-size: 16px; -fx-text-fill: #666;" text="Имя пользователя" />
+                        <HBox alignment="CENTER" spacing="10">
+                            <Label fx:id="roleLabel" style="-fx-background-color: #E3F2FD; -fx-text-fill: #2196F3; -fx-padding: 5 15; -fx-background-radius: 15; -fx-font-size: 12px; -fx-font-weight: 600;" text="👤 Пользователь" />
+                            <Label fx:id="statusLabel" style="-fx-background-color: #E8F5E9; -fx-text-fill: #4CAF50; -fx-padding: 5 15; -fx-background-radius: 15; -fx-font-size: 12px; -fx-font-weight: 600;" text="✅ Активен" />
+                        </HBox>
+                    </VBox>
+
+                </VBox>
+
+                <!-- Две колонки: Редактирование + Смена пароля -->
+                <HBox spacing="25">
+
+                    <!-- Левая колонка: Редактирование профиля -->
+                    <VBox spacing="20" style="-fx-background-radius: 12; -fx-padding: 25;" styleClass="card" HBox.hgrow="ALWAYS">
+
+                        <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #333;" text="✏ Редактирование профиля" />
+
+                        <Separator />
+
+                        <!-- Поле имени -->
+                        <VBox spacing="8">
+                            <Label style="-fx-font-size: 13px; -fx-text-fill: #555; -fx-font-weight: 600;" text="Имя:" />
+                            <TextField fx:id="fullnameField" promptText="Введите ваше имя" style="-fx-font-size: 14px; -fx-padding: 12px;" />
+                        </VBox>
+
+                        <!-- Логин -->
+                        <VBox spacing="8">
+                            <Label style="-fx-font-size: 13px; -fx-text-fill: #555; -fx-font-weight: 600;" text="Логин:" />
+                            <TextField fx:id="usernameField" promptText="Введите логин" style="-fx-font-size: 14px; -fx-padding: 12px;" />
+                        </VBox>
+
+                        <!-- Кнопка сохранения -->
+                        <Button maxWidth="Infinity" onAction="#saveProfile" style="-fx-font-size: 15px; -fx-padding: 12px;" styleClass="btn-success" text="💾 Сохранить изменения" />
+
+                        <!-- Сообщение -->
+                        <Label fx:id="profileMessageLabel" style="-fx-font-size: 13px;" wrapText="true" />
+
+                    </VBox>
+
+                    <!-- Правая колонка: Смена пароля -->
+                    <VBox spacing="20" style="-fx-background-radius: 12; -fx-padding: 25;" styleClass="card" HBox.hgrow="ALWAYS">
+
+                        <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #333;" text="🔑 Смена пароля" />
+
+                        <Separator />
+
+                        <!-- Текущий пароль -->
+                        <VBox spacing="8">
+                            <Label style="-fx-font-size: 13px; -fx-text-fill: #555; -fx-font-weight: 600;" text="Текущий пароль:" />
+                            <PasswordField fx:id="currentPasswordField" promptText="Введите текущий пароль" style="-fx-font-size: 14px; -fx-padding: 12px;" />
+                        </VBox>
+
+                        <!-- Новый пароль -->
+                        <VBox spacing="8">
+                            <Label style="-fx-font-size: 13px; -fx-text-fill: #555; -fx-font-weight: 600;" text="Новый пароль:" />
+                            <PasswordField fx:id="newPasswordField" promptText="Введите новый пароль" style="-fx-font-size: 14px; -fx-padding: 12px;" />
+                            <Label style="-fx-font-size: 11px; -fx-text-fill: #999;" text="💡 Минимум 6 символов" />
+                        </VBox>
+
+                        <!-- Подтверждение пароля -->
+                        <VBox spacing="8">
+                            <Label style="-fx-font-size: 13px; -fx-text-fill: #555; -fx-font-weight: 600;" text="Подтвердите пароль:" />
+                            <PasswordField fx:id="confirmPasswordField" promptText="Повторите новый пароль" style="-fx-font-size: 14px; -fx-padding: 12px;" />
+                        </VBox>
+
+                        <!-- Кнопка смены пароля -->
+                        <Button maxWidth="Infinity" onAction="#changePassword" style="-fx-font-size: 15px; -fx-padding: 12px;" styleClass="btn-primary" text="🔐 Изменить пароль" />
+
+                        <!-- Сообщение -->
+                        <Label fx:id="passwordMessageLabel" style="-fx-font-size: 13px;" wrapText="true" />
+
+                    </VBox>
+
+                </HBox>
+
+                <!-- Статистика пользователя -->
+                <VBox spacing="15" style="-fx-background-radius: 12; -fx-padding: 25;" styleClass="card">
+
+                    <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #333;" text="📊 Моя статистика" />
+
+                    <Separator />
+
+                    <HBox alignment="CENTER" spacing="20">
+
+                        <VBox alignment="CENTER" spacing="5" style="-fx-padding: 15; -fx-background-color: #E3F2FD; -fx-background-radius: 10;" HBox.hgrow="ALWAYS">
+                            <Label style="-fx-font-size: 32px;" text="❤" />
+                            <Label fx:id="favoritesCountLabel" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2196F3;" text="0" />
+                            <Label style="-fx-font-size: 12px; -fx-text-fill: #666;" text="Избранных" />
+                        </VBox>
+
+                        <VBox alignment="CENTER" spacing="5" style="-fx-padding: 15; -fx-background-color: #FFF3E0; -fx-background-radius: 10;" HBox.hgrow="ALWAYS">
+                            <Label style="-fx-font-size: 32px;" text="💬" />
+                            <Label fx:id="commentsCountLabel" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #FF9800;" text="0" />
+                            <Label style="-fx-font-size: 12px; -fx-text-fill: #666;" text="Комментариев" />
+                        </VBox>
+
+                        <VBox alignment="CENTER" spacing="5" style="-fx-padding: 15; -fx-background-color: #E8F5E9; -fx-background-radius: 10;" HBox.hgrow="ALWAYS">
+                            <Label style="-fx-font-size: 32px;" text="📅" />
+                            <Label fx:id="reservationsCountLabel" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #4CAF50;" text="0" />
+                            <Label style="-fx-font-size: 12px; -fx-text-fill: #666;" text="Бронирований" />
+                        </VBox>
+
+                    </HBox>
+
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

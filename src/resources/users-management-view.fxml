@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane style="-fx-background-color: #FAFAFA;" stylesheets="@styles/main.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UsersManagementController">
+
+    <top>
+        <!-- Градиентный хедер -->
+        <HBox alignment="CENTER_LEFT" spacing="15" styleClass="header-bar">
+
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label style="-fx-font-size: 32px;" text="👥" />
+                <Label style="-fx-font-size: 22px;" styleClass="welcome-message" text="Управление пользователями" />
+            </HBox>
+
+            <Region HBox.hgrow="ALWAYS" />
+
+            <TextField fx:id="searchField" prefWidth="280" promptText="🔍 Поиск по логину или имени..." styleClass="search-field" />
+
+            <Button onAction="#backToMain" style="-fx-font-size: 15px; -fx-padding: 10 15;" styleClass="btn-icon" text="🔙 Назад" />
+
+            <Button onAction="#logout" style="-fx-padding: 8 15;" styleClass="btn-light" text="🚪 Выход" />
+
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="20" style="-fx-padding: 25;">
+
+            <!-- Статистика -->
+            <HBox spacing="20">
+                <!-- Всего пользователей -->
+                <VBox alignment="CENTER" spacing="8" style="-fx-background-radius: 12; -fx-padding: 20; -fx-min-width: 180;" styleClass="stats-card">
+                    <Label style="-fx-font-size: 40px;" text="👥" />
+                    <Label style="-fx-font-size: 13px; -fx-text-fill: #666;" text="Пользователей" />
+                    <Label fx:id="totalUsersLabel" style="-fx-font-size: 32px; -fx-text-fill: #2196F3;" styleClass="stats-value" text="0" />
+                </VBox>
+
+                <!-- Всего админов -->
+                <VBox alignment="CENTER" spacing="8" style="-fx-background-radius: 12; -fx-padding: 20; -fx-min-width: 180;" styleClass="stats-card">
+                    <Label style="-fx-font-size: 40px;" text="👑" />
+                    <Label style="-fx-font-size: 13px; -fx-text-fill: #666;" text="Администраторов" />
+                    <Label fx:id="totalAdminsLabel" style="-fx-font-size: 32px; -fx-text-fill: #FF9800;" styleClass="stats-value" text="0" />
+                </VBox>
+
+                <!-- Активных -->
+                <VBox alignment="CENTER" spacing="8" style="-fx-background-radius: 12; -fx-padding: 20; -fx-min-width: 180;" styleClass="stats-card">
+                    <Label style="-fx-font-size: 40px;" text="✅" />
+                    <Label style="-fx-font-size: 13px; -fx-text-fill: #666;" text="Активных" />
+                    <Label fx:id="activeUsersLabel" style="-fx-font-size: 32px; -fx-text-fill: #4CAF50;" styleClass="stats-value" text="0" />
+                </VBox>
+            </HBox>
+
+            <!-- Таблица пользователей -->
+            <VBox spacing="15" style="-fx-background-radius: 12; -fx-padding: 20;" styleClass="card">
+
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #333;" text="📋 Список пользователей" />
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Button onAction="#addUser" style="-fx-padding: 8 15;" styleClass="btn-success" text="➕ Добавить пользователя" />
+                </HBox>
+
+                <Separator />
+
+                <TableView fx:id="usersTable" style="-fx-background-color: transparent;">
+                    <columns>
+                        <TableColumn fx:id="colId" prefWidth="50" text="ID" />
+                        <TableColumn fx:id="colUsername" prefWidth="150" text="Логин" />
+                        <TableColumn fx:id="colFullname" prefWidth="200" text="Имя" />
+                        <TableColumn fx:id="colRole" prefWidth="100" text="Роль" />
+                        <TableColumn fx:id="colActive" prefWidth="100" text="Статус" />
+                        <TableColumn fx:id="colActions" prefWidth="200" text="Действия" />
+                    </columns>
+                </TableView>
+
+            </VBox>
+
+        </VBox>
+    </center>
+</BorderPane>
